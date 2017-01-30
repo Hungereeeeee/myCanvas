@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>arcTo</title>
+</head>
+<body>
+	<canvas id="canvas" style="border: 1px solid #aaa;display: block;margin: 50px auto">
+		当前浏览器不支持canvas
+	</canvas>
+	<script type="text/javascript">
+		window.onload= function(){
+			var canvas=document.getElementById('canvas');
+			canvas.width=800;
+			canvas.height=800;
+
+			var context=canvas.getContext('2d');
+			//使用context绘制
+
+			context.beginPath();
+			context.moveTo(150,150);
+			context.arcTo(650,150,650,650,200);
+
+			context.lineWidth=6;
+			context.strokeStyle='red';
+			context.stroke();
+
+			//baseline
+			context.beginPath();
+			context.moveTo(150,150);
+			context.lineTo(650,150);
+			context.lineTo(650,650);
+
+			context.lineWidth=2;
+			context.strokeStyle='gray';
+			context.stroke();
+		}
+	</script>
+</body>
+</html>

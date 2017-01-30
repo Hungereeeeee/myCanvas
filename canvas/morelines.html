@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>more lines</title>
+	<style>
+		html,body{
+			height: 100%;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="canvas"></canvas>
+	<script>
+		window.onload=function(){
+			var canvas=document.getElementById('canvas');
+			canvas.width=document.body.clientWidth;
+			canvas.height=document.body.clientHeight;
+
+			var context=canvas.getContext('2d');
+
+			context.beginPath();
+			// moveTo可以改用为lineTo  beginPath()会把上一次的点位置清空  moveTo是直接从一个点开始  lineTo是从上一个记录点开始绘制
+			context.moveTo(100,100);
+			context.lineTo(300,300);
+			context.lineTo(100,500);
+			context.lineWidth=5;
+			context.strokeStyle='red';
+
+			context.stroke();
+
+			context.beginPath();
+			context.moveTo(400,100);
+			context.lineTo(600,300);
+			context.lineTo(400,500);
+			context.lineWidth=10;
+			context.strokeStyle='blue';
+
+			context.stroke();
+
+			context.beginPath();
+			context.moveTo(700,100);
+			context.lineTo(900,300);
+			context.lineTo(700,500);
+			context.lineWidth=10;
+			context.strokeStyle='yellow';
+			context.fillStyle='red';
+			//closePath()的封闭效果
+			context.closePath()
+			//填充效果   fill和stroke对换会导致外边框被填充色遮盖
+			context.fill();
+			context.stroke();
+		}
+	</script>
+</body>
+</html>

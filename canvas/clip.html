@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>clip</title>
+</head>
+<body>
+	<canvas id="canvas" style="border: 1px solid #aaa;display: block;margin: 50px auto">
+		当前浏览器不支持canvas
+	</canvas>
+	<script type="text/javascript">
+		window.onload= function(){
+			var canvas=document.getElementById('canvas');
+			canvas.width=800;
+			canvas.height=800;
+
+			var context=canvas.getContext('2d');
+			//使用context绘制
+			context.beginPath();
+			context.fillStyle='black';
+			context.fillRect(0,0,canvas.width,canvas.height);
+
+			//使用刚才设置的路径把它剪切为当前的环境
+			context.beginPath();
+			context.arc(400,400,150,0,Math.PI*2);
+			context.fillStyle='#fff';
+			context.fill();
+			context.clip();
+
+			context.font='bold 150px Arial';
+			context.textAlign='center';
+			context.textBaseline='middle';
+			context.fillStyle='#058';
+			context.fillText('CANVAS',canvas.width/2,canvas.height/2)
+		}
+	</script>
+</body>
+</html>

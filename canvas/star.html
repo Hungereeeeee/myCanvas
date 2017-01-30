@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>star</title>
+	<style>
+		html,body{
+			height: 100%;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="canvas"></canvas>
+	<script>
+		window.onload=function(){
+			var canvas=document.getElementById('canvas');
+			canvas.width=document.body.clientWidth;
+			canvas.height=document.body.clientHeight;
+
+
+			var context=canvas.getContext('2d');
+
+			context.lineWidth=5;
+			//miter bevel round
+			context.lineJoin='miter';
+			//超过10就用bevel方式显示
+			context.miterLimit=10;
+			drawStar(context,80,160,400,400,30);
+			
+		}
+		function drawStar(cxt,r,R,x,y,rot){
+			cxt.beginPath();
+			for(var i=0;i<5;i++){
+				//外边点绘制  角度制转弧度制
+				cxt.lineTo(Math.cos((18+i*72-rot)/180*Math.PI )*R+x ,
+							   -Math.sin((18+i*72-rot)/180*Math.PI )*R+y);
+				//内点绘制  角度制转弧度制
+				cxt.lineTo(Math.cos((54+i*72-rot)/180*Math.PI )*r+x ,
+							   -Math.sin((54+i*72-rot)/180*Math.PI )*r+y);
+			}
+			cxt.closePath();
+			cxt.stroke();
+		}
+	</script>
+</body>
+</html>

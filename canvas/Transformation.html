@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Transformatin</title>
+</head>
+<body>
+	<canvas id="canvas" style="border: 1px solid #aaa;display: block;margin: 50px auto">
+		当前浏览器不支持canvas
+	</canvas>
+	<script type="text/javascript">
+		window.onload= function(){
+			var canvas=document.getElementById('canvas');
+			canvas.width=800;
+			canvas.height=800;
+
+			var context=canvas.getContext('2d');
+			//使用context绘制
+
+			//保存当前图形的状态
+			context.save();
+			context.fillStyle='red';
+			//图形变换
+			context.translate(100,100);
+			context.fillRect(0,0,400,400);
+
+			//返回保存之前的状态
+			context.restore();
+
+			context.save();
+			context.fillStyle='green';
+			//图形变换   会和上面叠加
+			context.translate(300,300);
+			context.fillRect(0,0,400,400);
+			context.restore();
+		}
+	</script>
+</body>
+</html>

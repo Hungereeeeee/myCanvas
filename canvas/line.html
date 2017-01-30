@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Canvas</title>
+</head>
+<body>
+	<canvas id="canvas" style="border: 1px solid #aaa;display: block;margin: 50px auto">
+		当前浏览器不支持canvas
+	</canvas>
+	<script type="text/javascript">
+		window.onload= function(){
+			var canvas=document.getElementById('canvas');
+			canvas.width=1024;
+			canvas.height=768;
+
+			var context=canvas.getContext('2d');
+			//使用context绘制
+
+			//声明开始新的路径
+			context.beginPath()
+			//设置绘制状态
+			context.moveTo(100,100)
+			context.lineTo(700,700)
+			context.lineTo(100,700)
+			context.lineTo(100,100)
+
+			//结束当前路径
+			context.closePath()
+			
+			// //对多边形就行填色
+			// context.fillStyle='rgb(2,100,30)'
+			// context.fill()
+
+			//对多边形边框进行绘制
+			context.lineWidth=5;
+			context.strokeStyle='red';
+			//确认绘制
+			context.stroke();
+
+			context.beginPath()
+			context.moveTo(200,100)
+			context.lineTo(800,700)
+			context.closePath()
+			context.strokeStyle='black'
+			context.stroke()
+		}
+	</script>
+</body>
+</html>

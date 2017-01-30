@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>api</title>
+  <style>
+    html, body {
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="canvas"></canvas>
+<script>
+    window.onload = function () {
+        var canvas = document.getElementById('canvas');
+        canvas.width = document.body.clientWidth;
+        canvas.height = document.body.clientHeight;
+
+
+        var context = canvas.getContext('2d');
+
+        context.beginPath();
+        //规划矩形路径
+        context.rect(100, 100, 200, 200);
+        context.closePath();
+
+        context.strokeStyle = 'red';
+        context.lineWidth = 5;
+        context.fillStyle = 'blue';
+
+        context.fill();
+        context.stroke();
+
+        //直接绘制 canvas透明时的遮挡关系
+        context.strokeStyle = 'green';
+        context.lineWidth = 5;
+        context.fillStyle = 'rgba(165,165,165,0.6)';
+
+        context.fillRect(200, 200, 200, 200)
+        context.strokeRect(200, 200, 200, 200)
+    }
+</script>
+</body>
+</html>

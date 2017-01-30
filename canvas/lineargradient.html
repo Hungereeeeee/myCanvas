@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>LinearGradient</title>
+</head>
+<body>
+	<canvas id="canvas" style="border: 1px solid #aaa;display: block;margin: 50px auto">
+		当前浏览器不支持canvas
+	</canvas>
+	<script type="text/javascript">
+		window.onload= function(){
+			var canvas=document.getElementById('canvas');
+			canvas.width=800;
+			canvas.height=800;
+
+			var context=canvas.getContext('2d');
+			//使用context绘制
+
+			var linearGrad=context.createLinearGradient(0,0,800,800);
+			linearGrad.addColorStop(0.0,'#fff');
+			linearGrad.addColorStop(1.0,'#000');
+			context.fillStyle=linearGrad;
+			context.fillRect(0,0,800,800);
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Transform</title>
+	<style>
+		html,body{
+			height: 100%;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="canvas"></canvas>
+	<script>
+		window.onload=function(){
+			var canvas=document.getElementById('canvas');
+			canvas.width=document.body.clientWidth;
+			canvas.height=document.body.clientHeight;
+
+			var context=canvas.getContext('2d');
+
+			context.fillStyle='red';
+			context.strokeStyle='#058';
+			context.lineWidth=5;
+
+			///////////////////////
+			//变换矩阵
+			//a c e
+			//b d f
+			//0 0 1
+			////////////////////////
+			//a,d 水平/垂直缩放
+			//b,e 水平/垂直倾斜
+			//e,f 水平/垂直位移
+			///////////////////////
+
+			context.save()
+			//transform有级联效果  多个transform效果叠加
+			context.transform(2,0.2,0.5,1.5,50,100);
+			//让之前所有transform效果失效
+			context.setTransform(1,0,0,1,100,100)
+			context.fillRect(50,50,200,200);
+			context.strokeRect(50,50,200,200);
+			context.restore();
+		}
+	</script>
+</body>
+</html>
